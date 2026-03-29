@@ -1,0 +1,872 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Commerce Ops</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="backdrop-grid"></div>
+
+    <section id="landingShell" class="landing-shell">
+      <header class="landing-topbar">
+        <div class="landing-brand">
+          <p class="logo-wordmark">THAF E-COMMERCE</p>
+          <p class="brand-subtitle">Plataforma de gestao para e-commerce e multiempresa</p>
+        </div>
+        <div class="landing-actions">
+          <button type="button" id="landingLoginBtn" class="btn btn-ghost">Logar</button>
+          <button type="button" id="landingSignupBtn" class="btn btn-primary">Se cadastrar</button>
+        </div>
+      </header>
+
+      <main class="landing-main">
+        <section class="landing-hero-grid">
+          <div class="landing-hero-copy">
+            <p class="eyebrow">Plataforma Multiempresa</p>
+            <h1>Gestao completa para e-commerce em um sistema profissional</h1>
+            <p class="landing-lead">
+              Centralize produtos, estoque, vendas, compras, financeiro e equipe em uma plataforma robusta, elegante e
+              pronta para operacao real.
+            </p>
+            <ul class="landing-highlights">
+              <li>Isolamento total de dados por empresa</li>
+              <li>Painel executivo com indicadores e performance</li>
+              <li>Controle operacional integrado entre modulos</li>
+            </ul>
+            <div class="landing-cta">
+              <button type="button" id="landingCtaLoginBtn" class="btn btn-primary">Entrar na plataforma</button>
+              <button type="button" id="landingCtaSignupBtn" class="btn btn-ghost">Criar minha empresa</button>
+            </div>
+            <div class="landing-proof-strip">
+              <span>Multiempresa</span>
+              <span>Permissoes por usuario</span>
+              <span>Dashboard e financeiro em tempo real</span>
+            </div>
+          </div>
+
+          <aside class="landing-hero-mock">
+            <div class="mock-shell">
+              <div class="mock-topbar">
+                <span class="mock-pill">Dashboard</span>
+                <span class="mock-muted">Periodo: Ultimos 30 dias</span>
+              </div>
+              <div class="mock-kpis">
+                <article>
+                  <span>Receita</span>
+                  <strong>R$ 184.320</strong>
+                </article>
+                <article>
+                  <span>Liquido</span>
+                  <strong>R$ 49.880</strong>
+                </article>
+                <article>
+                  <span>Margem</span>
+                  <strong>27,1%</strong>
+                </article>
+              </div>
+              <div class="mock-chart">
+                <div class="mock-bars">
+                  <span style="height: 34%"></span>
+                  <span style="height: 52%"></span>
+                  <span style="height: 61%"></span>
+                  <span style="height: 47%"></span>
+                  <span style="height: 74%"></span>
+                  <span style="height: 66%"></span>
+                  <span style="height: 82%"></span>
+                </div>
+                <div class="mock-line"></div>
+              </div>
+              <div class="mock-table">
+                <div><span>Top produto</span><strong>Chaleira Inox</strong></div>
+                <div><span>Unidades</span><strong>1.248</strong></div>
+                <div><span>Ticket medio</span><strong>R$ 147,30</strong></div>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="landing-section">
+          <div class="landing-section-head">
+            <p class="eyebrow">Modulo completo</p>
+            <h2>Tudo que sua operacao precisa em um unico sistema</h2>
+            <p>Estrutura profissional para crescer com processo, controle e visao de resultado.</p>
+          </div>
+
+          <div class="landing-feature-grid">
+            <article class="landing-feature-card">
+              <h3>Produtos e categorias</h3>
+              <p>Cadastro mestre com SKU, codigo de barras, custo, marca e organizacao por categoria.</p>
+            </article>
+            <article class="landing-feature-card">
+              <h3>Estoque e vendas</h3>
+              <p>Entradas, saidas e lancamentos de vendas com impacto automatico no saldo e indicadores.</p>
+            </article>
+            <article class="landing-feature-card">
+              <h3>Compras e fornecedores</h3>
+              <p>Controle de abastecimento e despesas operacionais com historico e rastreabilidade.</p>
+            </article>
+            <article class="landing-feature-card">
+              <h3>Dashboard executivo</h3>
+              <p>KPIs, top produtos e fluxo financeiro por periodo para tomada de decisao rapida.</p>
+            </article>
+            <article class="landing-feature-card">
+              <h3>Financeiro completo</h3>
+              <p>Entradas, saidas, status de pagamento e consolidacao real da saude financeira.</p>
+            </article>
+            <article class="landing-feature-card">
+              <h3>Usuarios e permissoes</h3>
+              <p>Acesso por modulo, controle por perfil e seguranca para operar com equipe.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="landing-flow">
+          <div class="landing-section-head">
+            <p class="eyebrow">Como funciona</p>
+            <h2>Comece rapido e escale com controle</h2>
+          </div>
+          <div class="landing-flow-grid">
+            <article><span>1</span><h3>Crie sua empresa</h3><p>Cadastre seu workspace e entre com o usuario master.</p></article>
+            <article><span>2</span><h3>Organize seu catalogo</h3><p>Cadastre produtos, categorias e custos base da operacao.</p></article>
+            <article><span>3</span><h3>Controle rotina diaria</h3><p>Gerencie estoque, vendas, compras e financeiro no mesmo fluxo.</p></article>
+            <article><span>4</span><h3>Acompanhe resultados</h3><p>Use dashboard e relatorios para decidir com seguranca.</p></article>
+          </div>
+        </section>
+      </main>
+    </section>
+
+    <section id="loginShell" class="login-shell hidden">
+      <div class="login-layout">
+        <div class="login-brand">
+          <p class="logo-wordmark">THAF E-COMMERCE</p>
+          <p class="brand-subtitle">Sistema de gestao comercial para e-commerce</p>
+        </div>
+
+        <main class="login-card">
+          <div class="login-head">
+            <h2 id="loginTitle">Entrar</h2>
+            <span id="loginSubtitle">Acesse seu painel com email e senha.</span>
+          </div>
+
+          <div class="auth-switch" role="tablist" aria-label="Modo de acesso">
+            <button type="button" id="authModeLogin" class="auth-switch-btn active" role="tab" aria-selected="true">Entrar</button>
+            <button type="button" id="authModeSignup" class="auth-switch-btn" role="tab" aria-selected="false">Criar empresa</button>
+          </div>
+
+          <form id="loginForm" class="form-stack">
+            <div id="signupFields" class="signup-fields hidden">
+              <label class="field-label" for="signupCompanyName">Nome da empresa</label>
+              <input type="text" id="signupCompanyName" placeholder="Ex: Minha Empresa" />
+
+              <div class="signup-inline-grid">
+                <label>
+                  <span class="field-label">Nome fantasia</span>
+                  <input type="text" id="signupTradeName" placeholder="Opcional" />
+                </label>
+                <label>
+                  <span class="field-label">Email da empresa</span>
+                  <input type="email" id="signupCompanyEmail" placeholder="contato@empresa.com" />
+                </label>
+              </div>
+
+              <div class="signup-inline-grid">
+                <label>
+                  <span class="field-label">Telefone</span>
+                  <input type="text" id="signupCompanyPhone" placeholder="Opcional" />
+                </label>
+                <label>
+                  <span class="field-label">Documento</span>
+                  <input type="text" id="signupCompanyDocument" placeholder="Opcional" />
+                </label>
+              </div>
+
+              <label class="field-label" for="signupOwnerName">Nome do administrador</label>
+              <input type="text" id="signupOwnerName" placeholder="Nome completo" />
+            </div>
+
+            <label id="authEmailLabel" class="field-label" for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" placeholder="usuario@empresa.com" required />
+
+            <label id="authPasswordLabel" class="field-label" for="loginPassword">Senha</label>
+            <div class="password-input-wrap">
+              <input type="password" id="loginPassword" placeholder="Digite sua senha" required />
+              <button type="button" id="togglePasswordBtn" class="password-toggle" aria-label="Mostrar senha">
+                <svg class="icon-eye" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 5C6 5 2.2 9 1 12c1.2 3 5 7 11 7s9.8-4 11-7c-1.2-3-5-7-11-7Zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <svg class="icon-eye-off hidden" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M2 3.3 3.3 2l18.7 18.7-1.3 1.3-3.1-3.1A12.5 12.5 0 0 1 12 19c-6 0-9.8-4-11-7 .7-1.7 2.1-3.8 4.2-5.3L2 3.3Zm7 7 5 5a4 4 0 0 1-5-5Zm12.7 1.7a14 14 0 0 1-2.8 3.8l-2.2-2.2a4 4 0 0 0-5.2-5.2L9.8 7.2A12 12 0 0 1 12 5c6 0 9.8 4 11 7Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <button type="submit" id="loginSubmitBtn" class="btn btn-primary btn-lg login-submit">Entrar na plataforma</button>
+          </form>
+
+          <p id="loginFeedback" class="login-feedback"></p>
+          <p id="loginHint" class="login-hint">Acesso inicial: master@admin.local / admin123</p>
+        </main>
+      </div>
+    </section>
+
+    <section id="appShell" class="app-shell hidden">
+      <aside class="sidebar">
+        <div class="brand">
+          <div id="brandMark" class="brand-mark">TM</div>
+          <div class="brand-copy">
+            <p class="brand-pill">Commerce Ops</p>
+            <h2>Gestao E-commerce</h2>
+            <p id="userInfo" class="user-info"></p>
+          </div>
+        </div>
+
+        <nav id="mainNav" class="menu">
+          <button class="nav-item" data-section="dashboard">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="3" width="8" height="8" rx="2"></rect>
+                <rect x="13" y="3" width="8" height="5" rx="2"></rect>
+                <rect x="13" y="10" width="8" height="11" rx="2"></rect>
+                <rect x="3" y="13" width="8" height="8" rx="2"></rect>
+              </svg>
+            </span>
+            <span class="nav-label">Dashboard</span>
+          </button>
+          <button class="nav-item" data-section="produtos">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                <path d="M3 10h18M8 5v14"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Produtos</span>
+          </button>
+          <button class="nav-item" data-section="categorias">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 7h8l2 2h6v8a2 2 0 0 1-2 2H4z"></path>
+                <path d="M4 7V5a2 2 0 0 1 2-2h4l2 2"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Categorias</span>
+          </button>
+          <button class="nav-item" data-section="custos">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16M4 12h16M4 18h10"></path>
+                <circle cx="17" cy="18" r="3"></circle>
+              </svg>
+            </span>
+            <span class="nav-label">Calculadora de Custos</span>
+          </button>
+          <button class="nav-item" data-section="compras">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 7h10l2 12H5L7 7Z"></path>
+                <path d="M9 7V5a3 3 0 0 1 6 0v2"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Compras / Fornecedores</span>
+          </button>
+          <button class="nav-item" data-section="estoque">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 9 12 4l8 5v10l-8 4-8-4z"></path>
+                <path d="M4 9l8 4 8-4M12 13v10"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Estoque</span>
+          </button>
+          <button class="nav-item" data-section="vendas">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="9" cy="19" r="1.8"></circle>
+                <circle cx="17" cy="19" r="1.8"></circle>
+                <path d="M3 4h2l2.2 9.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.9-1.4L22 8H7"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Vendas</span>
+          </button>
+          <button class="nav-item" data-section="financeiro">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 19V9m5 10V5m5 14v-8m5 8V7"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Financeiro</span>
+          </button>
+          <button class="nav-item hidden" id="usersNav" data-section="usuarios">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="8" r="3"></circle>
+                <path d="M5 20a7 7 0 0 1 14 0"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Usuarios</span>
+          </button>
+        </nav>
+
+        <button id="logoutBtn" class="btn btn-ghost sidebar-logout">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4"></path>
+              <path d="M16 16l5-4-5-4M21 12H9"></path>
+            </svg>
+          </span>
+          <span class="nav-label">Sair</span>
+        </button>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button id="sidebarToggle" class="btn btn-ghost sidebar-toggle-btn" aria-label="Recolher menu">
+              <span class="toggle-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M15 6 9 12l6 6"></path>
+                </svg>
+              </span>
+            </button>
+            <div>
+              <p id="pageKicker" class="page-kicker">Visao Geral</p>
+              <h1 id="pageTitle">Dashboard Executivo</h1>
+            </div>
+          </div>
+          <div class="topbar-right">
+            <div id="topbarDateFilters" class="dashboard-filters">
+              <div class="date-range-inputs">
+                <label>
+                  <span>De</span>
+                  <input type="date" id="dashboardStartDate" />
+                </label>
+                <label>
+                  <span>Ate</span>
+                  <input type="date" id="dashboardEndDate" />
+                </label>
+                <button id="applyDateFilterBtn" class="btn btn-ghost btn-compact">Aplicar</button>
+              </div>
+              <div class="quick-range-buttons">
+                <button class="range-chip" data-range="today">Hoje</button>
+                <button class="range-chip" data-range="7d">7 dias</button>
+                <button class="range-chip" data-range="30d">30 dias</button>
+                <button class="range-chip" data-range="month">Este mes</button>
+                <button class="range-chip" data-range="last-month">Mes passado</button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <p id="feedback" class="feedback"></p>
+        <datalist id="productsLookupList"></datalist>
+
+        <section id="dashboardSection" class="section-stack">
+          <div id="kpiGrid" class="kpi-grid"></div>
+
+          <div class="panel-grid panel-grid-2">
+            <article class="panel-card chart-card">
+              <div class="card-head">
+                <h3>Fluxo financeiro do periodo</h3>
+                <span id="financeChartSubtitle" class="muted">Entradas, saidas e resultado liquido</span>
+                <div id="financeChartLegend" class="chart-legend"></div>
+              </div>
+              <div class="chart-wrap">
+                <canvas id="financeChart" width="960" height="280"></canvas>
+                <div id="financeTooltip" class="chart-tooltip hidden"></div>
+              </div>
+            </article>
+
+            <article class="panel-card">
+              <div class="card-head">
+                <h3>Top produtos por receita</h3>
+                <span class="muted">Rankeamento de performance</span>
+              </div>
+              <div id="topProducts"></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="produtosSection" class="section-stack hidden">
+          <article class="section-banner">
+            <div>
+              <p class="eyebrow">Cadastro mestre</p>
+              <h3>Produtos</h3>
+              <span>Cadastro principal de produtos sem entrada automática no estoque.</span>
+            </div>
+          </article>
+
+          <article class="panel-card">
+            <div class="card-head with-tools">
+              <div>
+                <h3 id="productFormTitle">Cadastro de produto</h3>
+                <span class="muted">Produto mestre para uso em estoque, compras e vendas</span>
+              </div>
+              <span id="productModeBadge" class="badge">Modo criacao</span>
+            </div>
+
+            <form id="productForm" class="form-grid cols-3">
+              <label>SKU<input type="text" id="sku" /></label>
+              <label>Nome do produto<input type="text" id="productName" required /></label>
+              <label>Categoria
+                <select id="productCategory"></select>
+              </label>
+              <label>Status
+                <select id="productStatus">
+                  <option value="active">Ativo</option>
+                  <option value="inactive">Inativo</option>
+                </select>
+              </label>
+              <label>Marca<input type="text" id="productBrand" placeholder="Ex: THAF MIX" /></label>
+              <label>Unidade
+                <select id="productUnit">
+                  <option value="un">un</option>
+                  <option value="kit">kit</option>
+                  <option value="cx">cx</option>
+                  <option value="pct">pct</option>
+                </select>
+              </label>
+              <label>Custo do item (R$)<input type="number" id="productCost" step="0.01" value="0" required /></label>
+              <label>Código de barras<input type="text" id="productBarcode" /></label>
+              <label class="span-2">Descrição<input type="text" id="productDescription" placeholder="Descrição do produto" /></label>
+            </form>
+
+            <div class="row-actions">
+              <button type="button" id="cancelEditBtn" class="btn btn-ghost hidden">Cancelar edicao</button>
+              <button type="submit" id="saveProductBtn" form="productForm" class="btn btn-primary">Salvar produto</button>
+            </div>
+          </article>
+
+          <article class="panel-card">
+            <div class="card-head with-tools table-toolbar">
+              <div>
+                <h3>Produtos cadastrados</h3>
+                <span class="muted">Tabela operacional com rentabilidade e estoque</span>
+              </div>
+              <div class="toolbar-actions">
+                <button id="deactivateSelectedProductsBtn" type="button" class="btn btn-ghost">Inativar selecionados</button>
+                <button id="deleteSelectedProductsBtn" type="button" class="btn btn-ghost">Excluir selecionados</button>
+                <select id="productStatusFilter" class="search">
+                  <option value="all">Todos status</option>
+                  <option value="active">Ativos</option>
+                  <option value="inactive">Inativos</option>
+                </select>
+                <input id="productSearch" class="search" type="search" placeholder="Buscar por nome ou SKU" />
+              </div>
+            </div>
+            <div id="productsTableWrap" class="table-wrap"></div>
+          </article>
+        </section>
+
+        <section id="categoriasSection" class="section-stack hidden">
+          <article class="panel-card">
+            <div class="card-head">
+              <h3 id="categoryFormTitle">Cadastro de categorias</h3>
+              <span class="muted">Categorias ativas ficam disponíveis para novos produtos</span>
+            </div>
+            <form id="categoryForm" class="form-grid cols-3">
+              <label>Nome da categoria<input type="text" id="categoryName" required /></label>
+              <label>Status
+                <select id="categoryStatus">
+                  <option value="active">Ativa</option>
+                  <option value="inactive">Inativa</option>
+                </select>
+              </label>
+              <label>Descrição<input type="text" id="categoryDescription" placeholder="Descrição opcional" /></label>
+              <div class="row-actions span-2">
+                <button type="button" id="cancelCategoryEditBtn" class="btn btn-ghost hidden">Cancelar edição</button>
+                <button type="submit" id="saveCategoryBtn" class="btn btn-primary">Salvar categoria</button>
+              </div>
+            </form>
+          </article>
+
+          <article class="panel-card">
+            <div class="card-head with-tools table-toolbar">
+              <div>
+                <h3>Categorias cadastradas</h3>
+                <span class="muted">Gestão com segurança de vínculo aos produtos</span>
+              </div>
+              <div class="toolbar-actions">
+                <button id="reactivateSelectedCategoriesBtn" type="button" class="btn btn-ghost">Reativar selecionadas</button>
+                <button id="deactivateSelectedCategoriesBtn" type="button" class="btn btn-ghost">Inativar selecionadas</button>
+                <button id="deleteSelectedCategoriesBtn" type="button" class="btn btn-ghost">Excluir selecionadas</button>
+                <input id="categorySearch" class="search" type="search" placeholder="Buscar categoria" />
+              </div>
+            </div>
+            <div id="categoriesTable" class="table-wrap"></div>
+          </article>
+        </section>
+
+        <section id="custosSection" class="section-stack hidden">
+          <article class="panel-card">
+            <div class="card-head">
+              <h3>Calculadora de custos e preço</h3>
+              <span class="muted">Simulação avulsa ou aplicada ao produto</span>
+            </div>
+            <div class="panel-grid panel-grid-2">
+              <form id="costCalculatorForm" class="form-grid cols-2">
+                <label>Produto (opcional)
+                  <select id="costCalcProduct"></select>
+                </label>
+                <label>Custo do produto (R$)<input type="number" id="calcCost" step="0.01" value="0" /></label>
+                <label>Taxa de envio (R$)<input type="number" id="calcShipping" step="0.01" value="0" /></label>
+                <label>Outros custos (R$)<input type="number" id="calcOtherCosts" step="0.01" value="0" /></label>
+                <label>Impostos (%)<input type="number" id="calcTaxPercent" step="0.01" value="0" /></label>
+                <label>Comissão (%)<input type="number" id="calcCommissionPercent" step="0.01" value="0" /></label>
+                <label>Margem de lucro (%)<input type="number" id="calcMarginPercent" step="0.01" value="30" /></label>
+              </form>
+
+              <div class="helper-block">
+                <h4>Resumo da simulação</h4>
+                <div id="costCalcSummary"></div>
+                <div class="row-actions">
+                  <button type="button" id="clearCostCalcBtn" class="btn btn-ghost">Limpar</button>
+                  <button type="button" id="saveCostCalcBtn" class="btn btn-primary">Salvar cálculo</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel-card">
+            <div class="card-head with-tools table-toolbar">
+              <div>
+                <h3>Histórico de cálculos</h3>
+                <span class="muted">Controle de simulações salvas (não impacta dashboard)</span>
+              </div>
+            </div>
+            <div id="costCalcHistoryTable" class="table-wrap"></div>
+          </article>
+        </section>
+
+        <section id="comprasSection" class="section-stack hidden">
+          <article class="panel-card">
+            <div class="card-head">
+              <h3>Fornecedores</h3>
+              <span class="muted">Cadastro e controle de parceiros</span>
+            </div>
+            <form id="supplierForm" class="form-grid cols-3">
+              <label>Nome / Razão social<input type="text" id="supplierName" required /></label>
+              <label>Contato<input type="text" id="supplierContact" /></label>
+              <label>Telefone<input type="text" id="supplierPhone" /></label>
+              <label>Email<input type="email" id="supplierEmail" /></label>
+              <label>Status
+                <select id="supplierStatus">
+                  <option value="active">Ativo</option>
+                  <option value="inactive">Inativo</option>
+                </select>
+              </label>
+              <label>Observações<input type="text" id="supplierNotes" /></label>
+              <button type="submit" class="btn btn-primary">Salvar fornecedor</button>
+            </form>
+            <div class="toolbar-actions" style="margin-top:10px;">
+              <button id="reactivateSelectedSuppliersBtn" type="button" class="btn btn-ghost">Reativar selecionados</button>
+              <button id="deactivateSelectedSuppliersBtn" type="button" class="btn btn-ghost">Inativar selecionados</button>
+              <button id="deleteSelectedSuppliersBtn" type="button" class="btn btn-ghost">Excluir selecionados</button>
+              <input id="supplierSearch" class="search" type="search" placeholder="Buscar fornecedor por nome, contato ou email" />
+            </div>
+            <div id="suppliersTable" class="table-wrap"></div>
+          </article>
+
+          <article class="panel-card">
+            <div class="card-head">
+              <h3>Compras</h3>
+              <span class="muted">Entrada de mercadoria e despesas operacionais</span>
+            </div>
+            <form id="purchaseForm" class="form-grid cols-3">
+              <label>Fornecedor
+                <select id="purchaseSupplier"></select>
+              </label>
+              <label>Tipo de compra
+                <select id="purchaseType">
+                  <option value="inventory">Mercadoria (atualiza estoque)</option>
+                  <option value="operational">Operacional (somente financeiro)</option>
+                </select>
+              </label>
+              <label>Data e hora<input type="datetime-local" id="purchaseDateTime" required /></label>
+              <label>Produto
+                <select id="purchaseProduct"></select>
+              </label>
+              <label>Descrição item<input type="text" id="purchaseItemLabel" placeholder="Ex: Caixa de envio" /></label>
+                <label>Quantidade<input type="number" id="purchaseQty" value="1" min="1" step="1" /></label>
+              <label>Custo unitário<input type="number" id="purchaseUnitCost" step="0.01" value="0" /></label>
+              <label>Forma de pagamento<input type="text" id="purchasePaymentMethod" value="PIX" /></label>
+              <label>Condição de pagamento<input type="text" id="purchasePaymentTerms" value="À vista" /></label>
+              <label>Status financeiro
+                <select id="purchasePaymentStatus">
+                  <option value="pendente">Pendente</option>
+                  <option value="pago">Pago</option>
+                  <option value="parcial">Parcial</option>
+                  <option value="vencido">Vencido</option>
+                </select>
+              </label>
+              <label class="span-2">Observações<input type="text" id="purchaseNotes" /></label>
+              <div class="row-actions span-2">
+                <button type="button" id="cancelPurchaseEditBtn" class="btn btn-ghost hidden">Cancelar edição</button>
+                <button type="submit" id="savePurchaseBtn" class="btn btn-primary">Registrar compra</button>
+              </div>
+            </form>
+            <div class="toolbar-actions" style="margin-top:10px;">
+              <button id="deleteSelectedPurchasesBtn" type="button" class="btn btn-ghost">Excluir selecionadas</button>
+              <input id="purchaseSearch" class="search" type="search" placeholder="Buscar compra por fornecedor, tipo ou item" />
+            </div>
+            <div id="purchasesTable" class="table-wrap"></div>
+          </article>
+        </section>
+
+        <section id="estoqueSection" class="section-stack hidden">
+          <article class="panel-card">
+            <div class="card-head">
+              <h3>Movimentacao de estoque</h3>
+              <span class="muted">Entradas e saidas de produtos</span>
+            </div>
+
+            <div class="panel-grid panel-grid-2">
+              <form id="stockEntryForm" class="form-grid cols-2 slim">
+                <h4>Registrar entrada</h4>
+                <label>Buscar produto<input type="text" id="entryProductQuery" list="productsLookupList" placeholder="Nome, SKU ou código de barras" /></label>
+                <label>Produto selecionado<select id="entryProduct"></select></label>
+                <label>Quantidade<input type="number" id="entryQty" value="1" min="1" step="1" required /></label>
+                <label>Data e hora<input type="datetime-local" id="entryDateTime" required /></label>
+                <label>Observacao<input type="text" id="entryNote" /></label>
+                <button type="submit" class="btn btn-primary">Confirmar entrada</button>
+              </form>
+
+              <form id="stockExitForm" class="form-grid cols-2 slim">
+                <h4>Registrar saida</h4>
+                <label>Buscar produto<input type="text" id="exitProductQuery" list="productsLookupList" placeholder="Nome, SKU ou código de barras" /></label>
+                <label>Produto selecionado<select id="exitProduct"></select></label>
+                <label>Quantidade<input type="number" id="exitQty" value="1" min="1" step="1" required /></label>
+                <label>Data e hora<input type="datetime-local" id="exitDateTime" required /></label>
+                <label>Observacao<input type="text" id="exitNote" /></label>
+                <button type="submit" class="btn btn-dark">Confirmar saida</button>
+              </form>
+            </div>
+          </article>
+
+          <article class="panel-card">
+            <div class="card-head with-tools table-toolbar">
+              <div>
+                <h3>Posição atual de estoque</h3>
+                <span class="muted">Visão operacional por nome, SKU e código de barras</span>
+              </div>
+              <div class="toolbar-actions">
+                <input id="stockPositionSearch" class="search" type="search" placeholder="Buscar por nome, SKU ou código de barras" />
+              </div>
+            </div>
+            <div id="stockPositionTable" class="table-wrap"></div>
+          </article>
+
+          <article class="panel-card">
+            <div class="card-head with-tools table-toolbar">
+              <div>
+                <h3>Historico de movimentacoes</h3>
+                <span class="muted">Ultimos registros da operacao</span>
+              </div>
+              <div class="toolbar-actions">
+                <button id="deleteSelectedMovementsBtn" type="button" class="btn btn-ghost">Excluir selecionados</button>
+                <input id="movementSearch" class="search" type="search" placeholder="Buscar por produto, tipo ou observacao" />
+              </div>
+            </div>
+            <div id="movementsTable" class="table-wrap"></div>
+          </article>
+        </section>
+
+        <section id="vendasSection" class="section-stack hidden">
+          <article class="panel-card">
+            <div class="card-head with-tools">
+              <div>
+                <h3 id="saleFormTitle">Lancamento de vendas</h3>
+                <span class="muted">Baixa automatica de estoque e registro financeiro</span>
+              </div>
+              <span id="saleModeBadge" class="badge">Modo criacao</span>
+            </div>
+            <form id="saleForm" class="form-grid cols-3">
+              <label>Buscar produto<input type="text" id="saleProductQuery" list="productsLookupList" placeholder="Nome, SKU ou código de barras" /></label>
+              <label>Produto selecionado<select id="saleProduct"></select></label>
+              <label>Quantidade<input type="number" id="saleQty" value="1" min="1" step="1" required /></label>
+              <label>Preco unitario<input type="number" id="salePrice" step="0.01" required /></label>
+              <label>Data e hora<input type="datetime-local" id="saleDateTime" required /></label>
+            </form>
+            <div class="row-actions">
+              <button type="button" id="cancelSaleEditBtn" class="btn btn-ghost hidden">Cancelar edicao</button>
+              <button type="submit" id="saveSaleBtn" form="saleForm" class="btn btn-primary">Registrar venda</button>
+            </div>
+          </article>
+
+          <article class="panel-card">
+            <div class="card-head with-tools table-toolbar">
+              <div>
+                <h3>Historico de vendas</h3>
+                <span class="muted">Acompanhamento dos lancamentos comerciais</span>
+              </div>
+              <div class="toolbar-actions">
+                <button id="deleteSelectedSalesBtn" type="button" class="btn btn-ghost">Excluir selecionados</button>
+                <input id="salesSearch" class="search" type="search" placeholder="Buscar por produto ou valor" />
+              </div>
+            </div>
+            <div id="salesTable" class="table-wrap"></div>
+          </article>
+        </section>
+
+        <section id="financeiroSection" class="section-stack hidden">
+          <article class="panel-card">
+            <div class="card-head">
+              <h3>Resumo financeiro do período</h3>
+              <span class="muted">Indicadores executivos de entradas, saídas e contas</span>
+            </div>
+            <div id="financeSummaryKpis" class="kpi-grid"></div>
+          </article>
+
+          <article class="panel-card">
+            <div class="card-head">
+              <h3>Gestao financeira</h3>
+              <span class="muted">Controle de gastos, ganhos e fluxo de caixa</span>
+            </div>
+
+            <div class="panel-grid panel-grid-2">
+              <form id="expenseForm" class="form-grid cols-2 slim">
+                <h4>Registrar gasto</h4>
+                <label>Categoria<input type="text" id="expenseCategory" value="Operacional" /></label>
+                <label>Descricao<input type="text" id="expenseDescription" /></label>
+                <label>Valor<input type="number" id="expenseAmount" step="0.01" required /></label>
+                <label>Data e hora<input type="datetime-local" id="expenseDateTime" required /></label>
+                <label>Forma de pagamento<input type="text" id="expensePaymentMethod" value="PIX" /></label>
+                <label>Condição de pagamento<input type="text" id="expensePaymentTerms" value="À vista" /></label>
+                <label>Status
+                  <select id="expensePaymentStatus">
+                    <option value="pago">Pago</option>
+                    <option value="pendente">Pendente</option>
+                    <option value="parcial">Parcial</option>
+                    <option value="vencido">Vencido</option>
+                  </select>
+                </label>
+                <label>Observação<input type="text" id="expenseNotes" /></label>
+                <button type="submit" class="btn btn-dark">Salvar gasto</button>
+              </form>
+
+              <form id="incomeForm" class="form-grid cols-2 slim">
+                <h4>Registrar ganho</h4>
+                <label>Categoria<input type="text" id="incomeCategory" value="Receita extra" /></label>
+                <label>Descricao<input type="text" id="incomeDescription" /></label>
+                <label>Valor<input type="number" id="incomeAmount" step="0.01" required /></label>
+                <label>Data e hora<input type="datetime-local" id="incomeDateTime" required /></label>
+                <label>Forma de pagamento<input type="text" id="incomePaymentMethod" value="PIX" /></label>
+                <label>Condição de pagamento<input type="text" id="incomePaymentTerms" value="À vista" /></label>
+                <label>Status
+                  <select id="incomePaymentStatus">
+                    <option value="pago">Pago</option>
+                    <option value="pendente">Pendente</option>
+                    <option value="parcial">Parcial</option>
+                    <option value="vencido">Vencido</option>
+                  </select>
+                </label>
+                <label>Observação<input type="text" id="incomeNotes" /></label>
+                <button type="submit" class="btn btn-primary">Salvar ganho</button>
+              </form>
+            </div>
+          </article>
+
+          <article class="panel-card">
+            <div class="card-head with-tools table-toolbar">
+              <div>
+                <h3>Lancamentos financeiros</h3>
+                <span class="muted">Extrato consolidado da empresa</span>
+              </div>
+              <div class="toolbar-actions">
+                <button id="deleteSelectedFinanceBtn" type="button" class="btn btn-ghost">Excluir selecionados</button>
+                <input id="financeSearch" class="search" type="search" placeholder="Buscar por categoria, tipo ou descricao" />
+              </div>
+            </div>
+            <div id="financeTable" class="table-wrap"></div>
+          </article>
+        </section>
+
+        <section id="usuariosSection" class="section-stack hidden">
+          <article class="panel-card">
+            <div class="card-head">
+              <h3 id="userFormTitle">Novo usuário</h3>
+              <span class="muted">Controle de acessos e permissoes</span>
+            </div>
+            <form id="userForm" class="form-grid cols-4">
+              <label>Nome<input type="text" id="newUserName" required /></label>
+              <label>Email<input type="email" id="newUserEmail" required /></label>
+              <label>Senha<input type="password" id="newUserPassword" required /></label>
+              <label>Perfil
+                <select id="newUserRole">
+                  <option value="member">Membro</option>
+                  <option value="admin">Admin</option>
+                  <option value="master">Master</option>
+                </select>
+              </label>
+              <label class="span-2">Foto / avatar<input type="file" id="newUserAvatarFile" accept="image/*" /></label>
+              <div class="avatar-editor span-2">
+                <div id="userAvatarPreview" class="avatar-preview"></div>
+                <div class="avatar-editor-meta">
+                  <button type="button" id="removeUserAvatarBtn" class="btn btn-ghost btn-sm">Remover foto</button>
+                  <span class="muted">PNG/JPG/WebP até 700KB</span>
+                </div>
+              </div>
+              <fieldset class="permission-group span-2">
+                <legend>Permissões de acesso</legend>
+                <div class="permission-tools">
+                  <button type="button" id="permSelectAllBtn" class="btn btn-ghost btn-sm">Marcar todos</button>
+                  <button type="button" id="permClearAllBtn" class="btn btn-ghost btn-sm">Limpar todos</button>
+                  <select id="permissionPreset" class="search">
+                    <option value="">Preset rápido</option>
+                    <option value="master">Master</option>
+                    <option value="admin">Admin</option>
+                    <option value="estoque">Estoque</option>
+                    <option value="comercial">Comercial</option>
+                    <option value="financeiro">Financeiro</option>
+                  </select>
+                </div>
+                <label><input type="checkbox" name="userModulePermission" value="dashboard" checked /> Dashboard</label>
+                <label><input type="checkbox" name="userModulePermission" value="products" /> Produtos</label>
+                <label><input type="checkbox" name="userModulePermission" value="costs" /> Calculadora de Custos</label>
+                <label><input type="checkbox" name="userModulePermission" value="purchases" /> Compras / Fornecedores</label>
+                <label><input type="checkbox" name="userModulePermission" value="inventory" /> Estoque</label>
+                <label><input type="checkbox" name="userModulePermission" value="sales" /> Vendas</label>
+                <label><input type="checkbox" name="userModulePermission" value="finance" /> Financeiro</label>
+                <label><input type="checkbox" name="userModulePermission" value="users" /> Usuários</label>
+              </fieldset>
+              <div class="row-actions span-2">
+                <button type="button" id="cancelUserEditBtn" class="btn btn-ghost hidden">Cancelar edição</button>
+                <button id="saveUserBtn" type="submit" class="btn btn-primary btn-sm">Criar usuario</button>
+              </div>
+            </form>
+          </article>
+
+          <article class="panel-card">
+            <div class="card-head with-tools table-toolbar">
+              <div>
+                <h3>Usuarios cadastrados</h3>
+                <span class="muted">Lista de membros ativos</span>
+              </div>
+              <div class="toolbar-actions">
+                <button id="reactivateSelectedUsersBtn" type="button" class="btn btn-ghost">Reativar selecionados</button>
+                <button id="deactivateSelectedUsersBtn" type="button" class="btn btn-ghost">Inativar selecionados</button>
+                <button id="deleteSelectedUsersBtn" type="button" class="btn btn-ghost">Excluir selecionados</button>
+                <select id="userStatusFilter" class="search">
+                  <option value="all">Todos status</option>
+                  <option value="active">Ativos</option>
+                  <option value="inactive">Inativos</option>
+                </select>
+                <input id="usersSearch" class="search" type="search" placeholder="Buscar por nome, email ou perfil" />
+              </div>
+            </div>
+            <div id="usersTable" class="table-wrap"></div>
+          </article>
+        </section>
+      </main>
+    </section>
+
+    <div id="toast" class="toast hidden"></div>
+    <script src="/app.js"></script>
+  </body>
+</html>
