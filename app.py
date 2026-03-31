@@ -2,7 +2,9 @@
 import os
 import sqlite3
 import hashlib
-import secrets
+import base64
+import hmac
+import time
 import re
 from datetime import datetime, timedelta
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -25,6 +27,8 @@ def resolve_db_path() -> str:
 
 
 DB_PATH = resolve_db_path()
+TOKEN_SECRET = os.environ.get("TOKEN_SECRET", "thaf-ecommerce-default-token-secret")
+TOKEN_LIFETIME_SECONDS = 7 * 24 * 60 * 60
 
 MODULE_KEYS = (
     "dashboard",
@@ -50,6 +54,45 @@ def utc_now_iso():
 
 def hash_password(password: str) -> str:
     return hashlib.sha256(password.encode("utf-8")).hexdigest()
+
+
+def _b64url_encode(raw: bytes) -> str:
+    return base64.urlsafe_b64encode(raw).rstrip(b"=").decode("ascii")
+
+
+def _b64url_decode(encoded: str) -> bytes:
+    padded = encoded + "=" * (-len(encoded) % 4)
+    return base64.urlsafe_b64decode(padded.encode("ascii"))
+
+
+def issue_auth_token(user_id: int, company_id: int) -> str:
+    payload = {
+        "uid": int(user_id),
+        "cid": int(company_id),
+        "exp": int(time.time()) + TOKEN_LIFETIME_SECONDS,
+    }
+    payload_raw = json.dumps(payload, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+    signature = hmac.new(TOKEN_SECRET.encode("utf-8"), payload_raw, hashlib.sha256).digest()
+    return f"{_b64url_encode(payload_raw)}.{_b64url_encode(signature)}"
+
+
+def parse_auth_token(token: str):
+    try:
+        payload_part, signature_part = str(token or "").split(".", 1)
+        payload_raw = _b64url_decode(payload_part)
+        sent_signature = _b64url_decode(signature_part)
+        expected_signature = hmac.new(TOKEN_SECRET.encode("utf-8"), payload_raw, hashlib.sha256).digest()
+        if not hmac.compare_digest(sent_signature, expected_signature):
+            return None
+        payload = json.loads(payload_raw.decode("utf-8"))
+        if int(payload.get("exp") or 0) < int(time.time()):
+            return None
+        return {
+            "user_id": int(payload.get("uid") or 0),
+            "company_id": int(payload.get("cid") or 0),
+        }
+    except Exception:
+        return None
 
 
 def slugify(value: str) -> str:
@@ -681,6 +724,24 @@ def init_db():
 def get_user_by_token(conn, token):
     if not token:
         return None
+    parsed_token = parse_auth_token(token)
+    if parsed_token:
+        user_id = int(parsed_token["user_id"] or 0)
+        company_id = int(parsed_token["company_id"] or 0)
+        if user_id <= 0 or company_id <= 0:
+            return None
+        row = conn.execute(
+            """
+            SELECT u.*, c.name AS company_name, c.slug AS company_slug
+            FROM users u
+            JOIN companies c ON c.id = u.company_id
+            WHERE u.id = ? AND u.company_id = ? AND u.is_active = 1 AND c.is_active = 1
+            """,
+            (user_id, company_id),
+        ).fetchone()
+        return row
+
+    # Compatibilidade com tokens antigos salvos na tabela sessions.
     row = conn.execute(
         """
         SELECT u.*, c.name AS company_name, c.slug AS company_slug FROM sessions s
@@ -1855,12 +1916,7 @@ class AppHandler(BaseHTTPRequestHandler):
                     ),
                 )
                 user_id = user_cur.lastrowid
-                token = secrets.token_hex(24)
-                expires = (datetime.utcnow() + timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%SZ")
-                conn.execute(
-                    "INSERT INTO sessions (token, company_id, user_id, expires_at) VALUES (?,?,?,?)",
-                    (token, company_id, user_id, expires),
-                )
+                token = issue_auth_token(user_id, company_id)
                 log_audit(
                     conn,
                     "users",
@@ -1909,12 +1965,7 @@ class AppHandler(BaseHTTPRequestHandler):
                 company_id = int(row["company_id"] or 0)
                 if company_id <= 0:
                     return self.send_json({"error": "Usuário sem empresa vinculada."}, status=400)
-                token = secrets.token_hex(24)
-                expires = (datetime.utcnow() + timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%SZ")
-                conn.execute(
-                    "INSERT INTO sessions (token, company_id, user_id, expires_at) VALUES (?,?,?,?)",
-                    (token, company_id, row["id"], expires),
-                )
+                token = issue_auth_token(row["id"], company_id)
                 conn.commit()
                 return self.send_json({
                     "token": token,
