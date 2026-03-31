@@ -3920,12 +3920,48 @@ def home():
     return redirect("/index.html", code=307)
 
 
+def _find_asset_path(filename: str):
+    for directory in (PUBLIC_DIR, STATIC_DIR):
+        candidate = os.path.join(directory, filename)
+        if os.path.exists(candidate):
+            return candidate
+    return None
+
+
+def _render_index_with_inline_css():
+    index_path = _find_asset_path("index.html")
+    if not index_path:
+        return None
+    try:
+        with open(index_path, "r", encoding="utf-8") as fp:
+            html = fp.read()
+    except OSError:
+        return None
+
+    css_path = _find_asset_path("styles.css")
+    if not css_path:
+        return html
+
+    try:
+        with open(css_path, "r", encoding="utf-8") as fp:
+            css = fp.read()
+    except OSError:
+        return html
+
+    inline_tag = "<style id=\"inline-app-styles\">"
+    if inline_tag in html:
+        return html
+
+    if "</head>" in html:
+        html = html.replace("</head>", f"{inline_tag}\n{css}\n</style>\n</head>", 1)
+    return html
+
+
 @app.route("/index.html")
 def public_index():
-    if os.path.exists(os.path.join(STATIC_DIR, "index.html")):
-        return send_from_directory(STATIC_DIR, "index.html")
-    if os.path.exists(os.path.join(PUBLIC_DIR, "index.html")):
-        return send_from_directory(PUBLIC_DIR, "index.html")
+    html = _render_index_with_inline_css()
+    if html is not None:
+        return Response(html, status=200, content_type="text/html; charset=utf-8")
     return Response("index.html não encontrado", status=404, content_type="text/plain; charset=utf-8")
 
 
@@ -3981,11 +4017,10 @@ def run():
     ensure_db_initialized()
     host = "127.0.0.1"
     port = 8000
-    server = HTTPServer((host, port), AppHandler)
     print("Plataforma de Gestão E-commerce")
     print(f"Acesse: http://{host}:{port}")
     print("Login master inicial -> email: master@admin.local | senha: admin123")
-    server.serve_forever()
+    app.run(host=host, port=port, debug=False, use_reloader=False)
 
 
 if __name__ == "__main__":
