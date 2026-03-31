@@ -11,9 +11,20 @@ from io import BytesIO
 from flask import Flask, Response, redirect, request, send_from_directory
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(BASE_DIR, "data", "ecommerce.db")
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 PUBLIC_DIR = os.path.join(BASE_DIR, "public")
+
+
+def resolve_db_path() -> str:
+    # Vercel filesystem is read-only outside /tmp.
+    if os.environ.get("VERCEL"):
+        runtime_data_dir = os.path.join("/tmp", "data")
+        os.makedirs(runtime_data_dir, exist_ok=True)
+        return os.path.join(runtime_data_dir, "ecommerce.db")
+    return os.path.join(BASE_DIR, "data", "ecommerce.db")
+
+
+DB_PATH = resolve_db_path()
 
 MODULE_KEYS = (
     "dashboard",
@@ -3920,17 +3931,30 @@ def public_index():
 
 @app.route("/styles.css")
 def public_styles():
-    return send_from_directory(STATIC_DIR, "styles.css")
+    for directory in (STATIC_DIR, PUBLIC_DIR):
+        candidate = os.path.join(directory, "styles.css")
+        if os.path.exists(candidate):
+            return send_from_directory(directory, "styles.css")
+    return Response("styles.css não encontrado", status=404, content_type="text/plain; charset=utf-8")
 
 
 @app.route("/app.js")
 def public_app_js():
-    return send_from_directory(STATIC_DIR, "app.js")
+    for directory in (STATIC_DIR, PUBLIC_DIR):
+        candidate = os.path.join(directory, "app.js")
+        if os.path.exists(candidate):
+            return send_from_directory(directory, "app.js")
+    return Response("app.js não encontrado", status=404, content_type="text/plain; charset=utf-8")
 
 
 @app.route("/static/<path:filename>")
 def public_static_file(filename):
     return send_from_directory(STATIC_DIR, filename)
+
+
+@app.route("/public/<path:filename>")
+def public_public_file(filename):
+    return send_from_directory(PUBLIC_DIR, filename)
 
 
 @app.route("/favicon.ico")
