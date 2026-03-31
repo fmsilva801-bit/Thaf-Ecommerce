@@ -1232,6 +1232,12 @@ class AppHandler(BaseHTTPRequestHandler):
         path = parsed.path
 
         if path == "/":
+            self.send_response(307)
+            self.send_header("Location", "/index.html")
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            return
+        if path == "/index.html":
             return self.serve_file("index.html", "text/html; charset=utf-8")
         if path == "/app.js":
             return self.serve_file("app.js", "application/javascript; charset=utf-8")
