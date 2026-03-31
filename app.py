@@ -3918,6 +3918,31 @@ def public_index():
     return Response("index.html não encontrado", status=404, content_type="text/plain; charset=utf-8")
 
 
+@app.route("/styles.css")
+def public_styles():
+    return send_from_directory(STATIC_DIR, "styles.css")
+
+
+@app.route("/app.js")
+def public_app_js():
+    return send_from_directory(STATIC_DIR, "app.js")
+
+
+@app.route("/favicon.ico")
+@app.route("/favicon.png")
+def public_favicon():
+    for directory, filename in (
+        (PUBLIC_DIR, "favicon.ico"),
+        (STATIC_DIR, "favicon.ico"),
+        (PUBLIC_DIR, "favicon.png"),
+        (STATIC_DIR, "favicon.png"),
+    ):
+        candidate = os.path.join(directory, filename)
+        if os.path.exists(candidate):
+            return send_from_directory(directory, filename)
+    return Response("", status=204)
+
+
 @app.route("/<path:path>", methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 def legacy_routes(path):
     return dispatch_legacy_handler(request)
