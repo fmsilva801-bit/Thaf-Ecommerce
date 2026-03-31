@@ -3911,7 +3911,11 @@ def home():
 
 @app.route("/index.html")
 def public_index():
-    return send_from_directory(PUBLIC_DIR, "index.html")
+    if os.path.exists(os.path.join(PUBLIC_DIR, "index.html")):
+        return send_from_directory(PUBLIC_DIR, "index.html")
+    if os.path.exists(os.path.join(STATIC_DIR, "index.html")):
+        return send_from_directory(STATIC_DIR, "index.html")
+    return Response("index.html não encontrado", status=404, content_type="text/plain; charset=utf-8")
 
 
 @app.route("/<path:path>", methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
