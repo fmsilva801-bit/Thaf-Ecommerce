@@ -14,18 +14,6 @@
   ],
   "routes": [
     {
-      "src": "/styles.css",
-      "dest": "/static/styles.css"
-    },
-    {
-      "src": "/app.js",
-      "dest": "/static/app.js"
-    },
-    {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    },
-    {
       "src": "/(.*)",
       "dest": "app.py"
     }
