@@ -7,10 +7,13 @@ import re
 from datetime import datetime, timedelta
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse, parse_qs
+from io import BytesIO
+from flask import Flask, Response, redirect, request, send_from_directory
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "data", "ecommerce.db")
 STATIC_DIR = os.path.join(BASE_DIR, "static")
+PUBLIC_DIR = os.path.join(BASE_DIR, "public")
 
 MODULE_KEYS = (
     "dashboard",
@@ -3833,8 +3836,91 @@ class AppHandler(BaseHTTPRequestHandler):
             conn.close()
 
 
+app = Flask(__name__)
+_DB_INITIALIZED = False
+
+
+def ensure_db_initialized():
+    global _DB_INITIALIZED
+    if not _DB_INITIALIZED:
+        init_db()
+        _DB_INITIALIZED = True
+
+
+class FlaskAdapterHandler(AppHandler):
+    def __init__(self, flask_request):
+        self._status_code = 200
+        self._headers = []
+        self._error_message = ""
+        self.headers = flask_request.headers
+        self.command = flask_request.method.upper()
+        self.path = flask_request.full_path if flask_request.query_string else flask_request.path
+        self.rfile = BytesIO(flask_request.get_data() or b"")
+        self.wfile = BytesIO()
+
+    def send_response(self, code, message=None):
+        self._status_code = int(code)
+
+    def send_header(self, keyword, value):
+        self._headers.append((str(keyword), str(value)))
+
+    def end_headers(self):
+        return
+
+    def send_error(self, code, message=None, explain=None):
+        self._status_code = int(code)
+        self._headers = [("Content-Type", "text/plain; charset=utf-8")]
+        msg = message or "Erro"
+        self.wfile = BytesIO(str(msg).encode("utf-8"))
+
+    def log_message(self, format, *args):
+        return
+
+
+def dispatch_legacy_handler(flask_request):
+    ensure_db_initialized()
+    adapter = FlaskAdapterHandler(flask_request)
+    method = adapter.command
+
+    if method == "GET":
+        AppHandler.do_GET(adapter)
+    elif method == "POST":
+        AppHandler.do_POST(adapter)
+    elif method == "PUT":
+        AppHandler.do_PUT(adapter)
+    elif method == "DELETE":
+        AppHandler.do_DELETE(adapter)
+    elif method == "OPTIONS":
+        AppHandler.do_OPTIONS(adapter)
+    else:
+        return Response("Método não suportado", status=405, content_type="text/plain; charset=utf-8")
+
+    payload = adapter.wfile.getvalue()
+    response = Response(payload, status=adapter._status_code)
+    for key, value in adapter._headers:
+        if key.lower() == "content-length":
+            continue
+        response.headers.add(key, value)
+    return response
+
+
+@app.route("/")
+def home():
+    return redirect("/index.html", code=307)
+
+
+@app.route("/index.html")
+def public_index():
+    return send_from_directory(PUBLIC_DIR, "index.html")
+
+
+@app.route("/<path:path>", methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
+def legacy_routes(path):
+    return dispatch_legacy_handler(request)
+
+
 def run():
-    init_db()
+    ensure_db_initialized()
     host = "127.0.0.1"
     port = 8000
     server = HTTPServer((host, port), AppHandler)
