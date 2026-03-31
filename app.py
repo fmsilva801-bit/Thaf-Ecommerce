@@ -3911,10 +3911,10 @@ def home():
 
 @app.route("/index.html")
 def public_index():
-    if os.path.exists(os.path.join(PUBLIC_DIR, "index.html")):
-        return send_from_directory(PUBLIC_DIR, "index.html")
     if os.path.exists(os.path.join(STATIC_DIR, "index.html")):
         return send_from_directory(STATIC_DIR, "index.html")
+    if os.path.exists(os.path.join(PUBLIC_DIR, "index.html")):
+        return send_from_directory(PUBLIC_DIR, "index.html")
     return Response("index.html não encontrado", status=404, content_type="text/plain; charset=utf-8")
 
 
@@ -3926,6 +3926,11 @@ def public_styles():
 @app.route("/app.js")
 def public_app_js():
     return send_from_directory(STATIC_DIR, "app.js")
+
+
+@app.route("/static/<path:filename>")
+def public_static_file(filename):
+    return send_from_directory(STATIC_DIR, filename)
 
 
 @app.route("/favicon.ico")

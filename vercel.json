@@ -14,6 +14,14 @@
   ],
   "routes": [
     {
+      "src": "/styles.css",
+      "dest": "/static/styles.css"
+    },
+    {
+      "src": "/app.js",
+      "dest": "/static/app.js"
+    },
+    {
       "src": "/(.*)",
       "dest": "app.py"
     }
